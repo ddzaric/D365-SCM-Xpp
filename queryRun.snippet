@@ -1,0 +1,40 @@
+
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>queryRun</Title>
+      <Description>Creates a query with a single table, executes in and fetches records.</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>table</ID>
+          <ToolTip>Table name</ToolTip>
+          <Default>MyTable</Default>
+        </Literal>
+        <Literal Editable="true">
+          <ID>buffer</ID>
+          <ToolTip>Table variable name</ToolTip>
+          <Default>myTable</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="X++">
+		<![CDATA[
+			Query query = new Query();
+			QueryBuildDataSource qbds = query.addDataSource(tableNum($table$));
+			QueryRun queryRun;
+			$table$ $buffer$;
+			 
+			queryRun = new QueryRun(query);
+			while (queryRun.next())
+			{
+				$buffer$ = queryRun.get(tableNum($table$));$end$
+			}
+		]]>
+	 </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

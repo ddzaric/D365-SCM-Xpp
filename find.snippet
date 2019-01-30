@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>find Method</Title>
+      <Author>Darko Dzaric</Author>
+      <Description>Code snippet for find method on table</Description>
+      <HelpUrl />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Keywords />
+      <Shortcut>find</Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations>
+        <Literal Editable="true">
+          <ID>AxTable</ID>
+          <ToolTip>AxTable</ToolTip>
+          <Default>AxTable</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>axTable</ID>
+          <ToolTip>axTable</ToolTip>
+          <Default>axTable</Default>
+          <Function>
+          </Function>
+        </Literal>        
+      </Declarations>
+      <Code Language="X++" Kind="" Delimiter="$">
+        <![CDATA[
+          /// <summary>
+          ///     Finds the specified record in the <c>$AxTable$</c> table.
+          /// </summary>
+          /// <param name="_refRecId">
+          ///     The specified recId
+          /// </param>
+          /// <param name="_forupdate">
+          ///     A Boolean value that indicates whether to read the record for update; optional.
+          /// </param>
+          /// <returns>
+          ///     A record in the <c>$AxTable$</c> table; otherwise, an empty record.
+          /// </returns>
+          public static $AxTable$ find(RefRecId _recId, boolean _forupdate = false)
+          {
+              $AxTable$ $axTable$;
+
+              if (_recId)
+              {
+                  $axTable$.selectForUpdate(_forupdate);
+
+                  select firstonly $axTable$
+                      where $axTable$.RecId == _recId;
+              }
+
+              return $axTable$;
+          }$end$
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

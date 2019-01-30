@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>exist Method</Title>
+      <Author>Darko Dzaric</Author>
+      <Description>Code snippet for exist method on table</Description>
+      <HelpUrl />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+        <SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+      <Keywords />
+      <Shortcut>exist</Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations>
+        <Literal Editable="true">
+          <ID>idField</ID>
+          <Type />
+          <ToolTip>idField</ToolTip>
+          <Default>idField</Default>
+          <Function />
+        </Literal>
+        <Literal Editable="true">
+          <ID>_idParam</ID>
+          <Type />
+          <ToolTip>_idParam</ToolTip>
+          <Default>_idParam</Default>
+          <Function />
+        </Literal>
+        <Literal Editable="true">
+          <ID>axTable</ID>
+          <Type />
+          <ToolTip>axTable</ToolTip>
+          <Default>axTable</Default>
+          <Function />
+        </Literal>
+      </Declarations>
+      <Code Language="X++" Kind="" Delimiter="$">
+        <![CDATA[
+          /// <summary>
+          ///     Checks whether the record exist for the given $idField$.
+          /// </summary>
+          /// <param name="$_idParam$">
+          ///     The specified $idField$
+          /// </param>
+          /// <returns>
+          ///     Returns true if the check succeed.
+          /// </returns>
+          static boolean exist($idField$ $_idParam$)
+          {
+              if (!$_idParam$)
+              {
+                  return false;
+              }
+
+              return (select firstonly RecId from $axTable$
+                          where $axTable$.$idField$ == $_idParam$).RecId != 0;
+          }
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
